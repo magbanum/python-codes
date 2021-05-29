@@ -1,2 +1,4 @@
 # Directories #
 venv
+poetry.lock
+pyproject.toml

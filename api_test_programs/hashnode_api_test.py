@@ -1,7 +1,9 @@
+import os
 import requests
 
 headers = {
-    "Authorization": "9e46f81b-f1b9-416b-bd76-bf2d3ec680a3"
+    "Authorization": os.environ['TOKEN']
+
 }
 
 def run_query(query, headers):
@@ -18,9 +20,20 @@ query = """{{
         tagline
         numFollowers
         publicationDomain
+        publication{{
+          posts(page:0){{
+            title
+            brief
+            coverImage
+            slug
+          }}
+        }}
     }}
-}}""".format(username=input())
+}}""".format(username=input("Enter the Hashnode Username: "))
 
-result = run_query(query,headers)
-print(result["data"]["user"]["tagline"])
+output = run_query(query,headers)
+posts =  output["data"]["user"]["publication"]["posts"]
+print("Recent 6 blog posts of {} are: ".format(output["data"]["user"]["name"]))
+[print('-',post["title"]) for post in posts]
+
 
