@@ -1,8 +1,14 @@
+# Python program to get user data from GitHub api.
+# import requests module
 import requests
-
-response = requests.get("https://api.github.com/users/magbanum/repos")
-
+# provide GitHub username
+username = input()
+# Join the username at the end of api link
+url = "https://api.github.com/users/" + username
+# Get the response from url
+response = requests.get(url)
+# Convert the data into Json format
 json_output = response.json()
-
-for data in json_output:
-    print(data['name'],":",data["language"])
+# Loop through items in json to get key:value pairs
+for key, value in json_output.items():
+    print(key,":",value)

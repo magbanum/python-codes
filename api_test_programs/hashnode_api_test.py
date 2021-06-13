@@ -1,10 +1,6 @@
+# Python program to get Recent posts of blogger using Hashnode API
 import os
 import requests
-
-headers = {
-    "Authorization": os.environ['TOKEN']
-
-}
 
 def run_query(query, headers):
     response = requests.post(url="https://api.hashnode.com", json={'query': query}, headers=headers)
@@ -13,6 +9,11 @@ def run_query(query, headers):
     else:
         raise Exception("Query failed to run by returning code of {}.".format(response.status_code))
 
+# headers dict with Personal Access Token
+headers = {
+    "Authorization": os.environ['TOKEN']
+}
+# Queries created with GraphQL
 query = """{{
     user(username: "{username}"){{
         username
@@ -32,8 +33,11 @@ query = """{{
 }}""".format(username=input("Enter the Hashnode Username: "))
 
 output = run_query(query,headers)
+
 posts =  output["data"]["user"]["publication"]["posts"]
+
 print("Recent 6 blog posts of {} are: ".format(output["data"]["user"]["name"]))
+# List comprehension 
 [print('-',post["title"]) for post in posts]
 
 
