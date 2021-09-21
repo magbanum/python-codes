@@ -2,6 +2,7 @@
 
 ## Prerequisites:
 
+<<<<<<< HEAD
 ### github_api_test.py
 Make sure ```requests``` package is installed on your system using following command.
 ```
@@ -42,3 +43,18 @@ Youtube API: https://developers.google.com/youtube/v3/docs/
 Note: You will need to generate you own Youtube API key using above link to get access to APIs.
 
 -------------------------------------------------------
+=======
+#### api_test_programs:
+- github_api_test.py
+- hashnode_api_test.py
+- newsapi_test.py
+- youtube_api_test.py
+
+#### games:
+- snake-ladder.py
+
+#### web-scrapping:
+- brainyquote_scrapper.py
+
+slugify.py
+>>>>>>> 020ed4656b41e710d5eec8c99ab68b3a1ab94ae3
